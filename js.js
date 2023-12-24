@@ -92,7 +92,17 @@
 //     return arrayNum
 //   }
 // }
-let filterUserMassive = [1, 2, 3];
+const arr = [1,2,3]
+function some (array, predicate){
+ for( let i = 0; i< array.length;i++){
+    if(predicate(array[i])){
+        return true
+    }
+ }
+ return false
+}
+const result = some(arr,el => el > 1)
+console.log(result)
 
 function filter (array, predicate){
  let result= []
@@ -104,6 +114,15 @@ for(let i = 0; i < array.length; i++){
 }
 return result
 }
-console.log(filter(filterUserMassive, function(item){
+console.log(filter(arr, function(item){
     return item > 1
 }))
+
+function reduce (array,predicate,initialValue ){
+ let accumulate = initialValue;
+ for(let i = 0; i < array.length;i++){
+    accumulate = predicate(accumulate, array[i])
+ }
+ return accumulate
+}
+console.log(reduce(arr,(sum, el)=> sum + el, 0))
